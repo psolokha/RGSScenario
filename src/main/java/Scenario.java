@@ -1,11 +1,7 @@
-import com.sun.deploy.util.Waiter;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
@@ -20,8 +16,6 @@ public class Scenario {
 
         WebDriver driver = new ChromeDriver();
         Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
-
-        WebElement element;
 
         //----------Scenario steps:----------------
         driver.navigate().to("https://www.rgs.ru/");

@@ -4,6 +4,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
@@ -36,14 +38,15 @@ public class Scenario {
         driver.findElement(By.xpath("//input[contains(@name, 'Email')]")).sendKeys("qwertyqwerty");
         driver.findElement(By.xpath("//input[contains(@name, 'ContactDate')]")).clear();
         driver.findElement(By.xpath("//input[contains(@name, 'ContactDate')]")).sendKeys("21.12.2019");
-        driver.findElement(By.xpath("//input[contains(@data-bind, 'Phone')]")).clear();
-        driver.findElement(By.xpath("//input[contains(@data-bind, 'Phone')]")).sendKeys("1111111111");
+//        driver.findElement(By.xpath("//input[contains(@data-bind, 'Phone')]")).clear();
+//        driver.findElement(By.xpath("//input[contains(@data-bind, 'Phone')]")).sendKeys("1111111111");
 //        JavascriptExecutor jse = (JavascriptExecutor)driver;
 //        jse.executeScript("arguments[0].value='111111111';", driver.findElement(By.xpath("//input[contains(@data-bind, 'Phone')]")));
 //        jse.executeScript("arguments[0].value='21122019';", driver.findElement(By.xpath("//input[contains(@name, 'ContactDate')]")));
 
+        new Actions(driver).moveToElement(driver.findElement(By.xpath("//input[contains(@data-bind, 'Phone')]"))).click().sendKeys(driver.findElement(By.xpath("//input[contains(@data-bind, 'Phone')]")),"1111111111").build().perform();
 
-        new Select( driver.findElement(By.tagName("select"))).selectByVisibleText("Московская область");
+        new Select(driver.findElement(By.tagName("select"))).selectByVisibleText("Московская область");
 
         driver.findElement(By.xpath("//input[contains(@type, 'checkbox')]")).click();
         driver.findElement(By.xpath("//button[text()[contains(., 'Отправить')]]")).click();

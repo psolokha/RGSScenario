@@ -32,24 +32,21 @@ public class Scenario {
         driver.findElement(By.xpath("//a[text()[contains(., 'Отправить')]]")).click();
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[text()[contains(., 'Заявка на добровольное медицинское страхование')]]"))));
         System.out.println("Displayed Заявка на добровольное медицинское страхование: " + driver.findElement(By.xpath("//*[text()[contains(., 'Заявка на добровольное медицинское страхование')]]")).isDisplayed());
+        new Select(driver.findElement(By.tagName("select"))).selectByVisibleText("Московская область");
         driver.findElement(By.xpath("//input[contains(@name, 'FirstName')]")).sendKeys("Иван");
         driver.findElement(By.xpath("//input[contains(@name, 'LastName')]")).sendKeys("Иванов");
         driver.findElement(By.xpath("//input[contains(@name, 'MiddleName')]")).sendKeys("Иванович");
-        driver.findElement(By.xpath("//input[contains(@name, 'Email')]")).sendKeys("qwertyqwerty");
-        driver.findElement(By.xpath("//input[contains(@name, 'ContactDate')]")).clear();
+        driver.findElement(By.xpath("//input[contains(@name, 'Email')]")).sendKeys("qwertyqwerty@");
+        driver.findElement(By.xpath("//input[contains(@name, 'ContactDate')]")).click();
         driver.findElement(By.xpath("//input[contains(@name, 'ContactDate')]")).sendKeys("21.12.2019");
-//        driver.findElement(By.xpath("//input[contains(@data-bind, 'Phone')]")).clear();
-//        driver.findElement(By.xpath("//input[contains(@data-bind, 'Phone')]")).sendKeys("1111111111");
-//        JavascriptExecutor jse = (JavascriptExecutor)driver;
-//        jse.executeScript("arguments[0].value='111111111';", driver.findElement(By.xpath("//input[contains(@data-bind, 'Phone')]")));
-//        jse.executeScript("arguments[0].value='21122019';", driver.findElement(By.xpath("//input[contains(@name, 'ContactDate')]")));
-
-        new Actions(driver).moveToElement(driver.findElement(By.xpath("//input[contains(@data-bind, 'Phone')]"))).click().sendKeys(driver.findElement(By.xpath("//input[contains(@data-bind, 'Phone')]")),"1111111111").build().perform();
-
-        new Select(driver.findElement(By.tagName("select"))).selectByVisibleText("Московская область");
+        driver.findElement(By.xpath("//input[contains(@name, 'MiddleName')]")).click();
+        driver.findElement(By.xpath("//input[contains(@data-bind, 'Phone')]")).sendKeys("+7(999)2002299");
 
         driver.findElement(By.xpath("//input[contains(@type, 'checkbox')]")).click();
         driver.findElement(By.xpath("//button[text()[contains(., 'Отправить')]]")).click();
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//span[contains(text(), 'Введите адрес электронной почты')]"))));
+        System.out.println("Displayed Введите адрес электронной почты: " + driver.findElement(By.xpath("//span[contains(text(), 'Введите адрес электронной почты')]")).isDisplayed());
 
 
     }

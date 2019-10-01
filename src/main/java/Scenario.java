@@ -1,6 +1,5 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -34,7 +33,9 @@ public class Scenario {
         driver.findElement(By.xpath("//input[contains(@name, 'ContactDate')]")).click();
         driver.findElement(By.xpath("//input[contains(@name, 'ContactDate')]")).sendKeys("21.12.2019");
         driver.findElement(By.xpath("//input[contains(@name, 'MiddleName')]")).click();
-        driver.findElement(By.xpath("//input[contains(@data-bind, 'Phone')]")).sendKeys("+7(999)2002299");
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//label[contains(text(), 'Телефон')]"))));
+        driver.findElement(By.xpath("//input[contains(@data-bind, 'Phone')]")).click();
+        driver.findElement(By.xpath("//input[contains(@data-bind, 'Phone')]")).sendKeys("+79992002299");
 
         driver.findElement(By.xpath("//input[contains(@type, 'checkbox')]")).click();
         driver.findElement(By.xpath("//button[text()[contains(., 'Отправить')]]")).click();
